@@ -1,4 +1,6 @@
-### Bachelor project April-June 2023
+### Bachelor project 
+- Bachelor programme: Chemistry (joint degree UvA/VU)
+- Duration: 3 months (April 2023 - June 2023)
 
 # Molecular fingerprints
 
@@ -99,3 +101,6 @@ The following list describes the directories and files from this project, and wh
 ## Supervisors
 - dr. Saer Samanipour
 - Viktoriia Turkina MSc
+
+## Research group, research institute and university
+Analytical Chemistry Group, Van 't Hoff Institute for Molecular Sciences (HIMS), University of Amsterdam (UvA)
