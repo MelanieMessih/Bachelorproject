@@ -46,21 +46,33 @@ De kwaliteit van het rooster wordt gemeten aan de hand van de volgende objective
 
 ### Requirements
 
-This codebase is fully written in Julia [3.9.13]. The packages needed to sucessfully run the code is provided below:
+This codebase is fully written in Julia [3.9.13]. The packages needed to sucessfully run the code are provided below:
 
 ```
-python3 -m pip install pdfschedule
+using Pkg, CSV, DataFrames, PyCall, Conda, ScikitLearn, Statistics, Plots, Tables, Plots.PlotMeasures, LightXML, LinearAlgebra, ProgressBars, OrderedCollections, Base.Filesystem
 ```
-```
-pip install pyyaml
-```
+
+Other packages are installed using pyimport and are given in the "import.jl" file.
 
 ### Use
 
-Een voorbeeldje kan gerund worden door het aanroepen van:
+An example of how to run the function is provided below:
 
 ```
-python main.py
+include("final_function.jl")
+create_best_fingerprint(2, index_col_nr=1, inchikeys_col_nr=4)
+```
+
+### Files needed
+
+An overview of the files needed in the main directory is provided below:
+
+```
+descriptors.xml
+toxicity_data_fish_desc.csv
+final_functions.jl
+final_imports.jl
+final_function.jl
 ```
 
 Het bestand geeft aan hoe verschillende functies en algoritmes gebruikt kunnen worden.
