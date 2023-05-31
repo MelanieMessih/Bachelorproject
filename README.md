@@ -9,6 +9,24 @@ This function takes a path. If the path does not exist, the specified path of di
 Parameters:  
 - path: ...
 
+#### create_all_directories()  
+This function creates all directories needed for this project. Specifically, the function creates directories for summaries, figures, fingerprints and models, and each option has three subdirectories: PaDEL, RDKit and combined_fingerprints.  
+Parameters:  
+-
+
+#### function RDKit_fingerprints(dataset, fp_name, index_col_nr, smiles_col_nr, inchikeys_col_nr; nBits=nothing, radius=nothing)    
+    """
+    This function takes a DataFrame, a fingerprint name that corresponds to one in the dictionary 'dict' below, 
+    and the column numbers of indices, SMILES and inchikeys in the DataFrame. nBits and radius are optional arguments 
+    that only apply for certain fingerprints, specified in 'dict'. The function generates RDKit fingerprints for each 
+    molecule in the data set using their SMILES. The function returns a DataFrame with indices, inchikeys and the 
+    generated fingerprints, and the feature names. 
+    """
+
+
+
+
+
 Het inroosteren van lessen is een ingewikkeld probleem. In deze case moet een weekrooster gemaakt worden voor een vakkenlijst op Science Park. 
 
 Hiervoor moeten 131 activiteiten ingepland worden. Dit kunnen hoorcolleges, werkcolleges en practica zijn.
