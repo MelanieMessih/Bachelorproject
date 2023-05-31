@@ -30,13 +30,39 @@ An example of how to run the function is provided below:
 
 ```
 include("final_function.jl")
-create_best_fingerprint(2, index_col_nr=1, inchikeys_col_nr=4)
+create_best_fingerprint(fish_toxicity_data, y_data, 2, index_col_nr=1, inchikeys_col_nr=4)
 ```
 
 ### Overview functions
 
+### Included in final_function.jl:
+#### create_best_fingerprint(dataset, y_data, smiles_col_nr; index_col_nr=nothing, inchikeys_col_nr=nothing, limit_train_score=0.8, limit_test_score=0.5, variance_explained=85)
+    This function takes a DataFrame of the dataset that contains columns with X data, y data, SMILES and optionally 
+    indices and inchikeys, a vector of y data, and the column number of the DataFrame that contains SMILES. Optional
+    parameters are the column numbers that contain indices and inchikeys, two floats between 0 and 1 that represent 
+    the minimum train and test score for the selection of the fingerprints, and an integer between 0 and 100 that 
+    represents the variance percentage you want to have explained by the important features. 
+    
+    The function generates PaDEL and RDKit fingerprints, creates and optimizes random forest regressor models with 
+    them, selects the fingerprints of which the train and test score exceed the given limit_train_score and 
+    limit_test_score, and combines the selected fingerprints into one fingerprint. This final fingerprint is used to
+    create the final random forest model, which is trained and optimized. 
+    
+    During this process, summaries of the scores and results, the generated fingerprints, and the generated figures 
+    are saved as CSV files and the created models are saved as JOBLIB files. 
+    
+    Parameters:
+    - dataset: DataFrame that at least contains columns with X data, y data and SMILES of chemicals. 
+    - y_data: Vector with elements of type Int or Float.
+    - smiles_col_nr=nothing: Int.
+    - index_col_nr=nothing: Int.
+    - limit_train_score=0.8: Float between 0 and 1.
+    - limit_test_score=0.5: Float between 0 and 1. 
+    - variance_explained=85: Int between 0 and 100. 
+
+### Included in final_functions.jl:
 #### remove_features(X_data, headers=[])
-    This function takes a Dataframe or Matrix as input. When a DataFrame is given, "headers" can be left empty. When 
+    This function takes a DataFrame or Matrix as input. When a DataFrame is given, "headers" can be left empty. When 
     a Matrix is given, headers should be spicified to make sure the column headers are known when working with the 
     data. The function removes columns with missing, nan or inf values and returns the cleaned up Dataframe or Matrix 
     and its headers. 
