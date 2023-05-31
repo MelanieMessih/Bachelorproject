@@ -4,7 +4,7 @@
 
 # Molecular fingerprints
 
-create_directory(path::AbstractString)  
+#### create_directory(path::AbstractString)  
 This function takes a path. If the path does not exist, the specified path of directories is created.  
 Parameters:  
 - path: ...
