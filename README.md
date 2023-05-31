@@ -254,11 +254,12 @@
     as a JOBLIB file. 
     
     Parameters:
-    - fp_filename
-    - software_name
-    - y_data
-    - new_model_name
-    - param_grid
+    - fp_filename: Str (ending with ".csv"); name of an existing CSV file. 
+    - software_name: "PaDEL", "RDKit" or "combined_fingerprints".
+    - y_data: Vector with elements of type Float or Int.
+    - new_model_name: Str; model name should not exist already.
+    - param_grid: Dict with "min_samples_leaf" (Vector of Int), "n_estimators" (Vector of Int) and "max_features" (Vector 
+      of 1.0, "sqrt", and/or "log2") as keys (values).
     - variance_explained=85
     
 #### str_to_floatVec(string)
@@ -266,95 +267,55 @@
     type Float64. The function returns the resulting float vector. 
     
     Parameters:
-    - string: String of substrings separated by semicolons. Substrings should be able to be transformed to floats. 
+    - string: Str of substrings separated by semicolons. Substrings should be able to be transformed to floats. 
     
     Returns:
     - Vector with elements of type Float64.
     
 #### str_to_strVec(string)
     This function takes a string of substrings separated by semicolons and splits the substrings to separated parts of
-    type String. The function returns the resulting string vector. 
+    type Str. The function returns the resulting string vector. 
     
     Parameters:
-    - string: String of substrings separated by semicolons.
+    - string: Str of substrings separated by semicolons.
     
     Returns:
-    - Vector with elements of type String.
+    - Vector with elements of type Str.
 
 #### compute_residuals(y, predictions)
     This function takes a vector of y data and a vector of predictions and computes the residuals. The function returns 
     the resulting vector of residuals. 
     
     Parameters:
-    - y: Vector of type Float or Int.
-    - predictions: Vector of type Float or Int.
+    - y: Vector with elements of type Float or Int.
+    - predictions: Vector with elements of type Float or Int.
     
     Returns:
     - Vector of type Float or Int.
 
 #### write_csv(csv_filename, data) = CSV.write(csv_filename, data)
-    This function takes a CSV filename and a collection of type Dictionary, DataFrame or Table. The function saves the 
+    This function takes a CSV filename and a collection of type Dict, DataFrame or Table. The function saves the 
     given data as a CSV file with the chosen csv_filename. 
     
     Parameters:
-    - csv_filename: String (ending with ".csv").
-    - data: Dictionary, DataFrame or Table.
+    - csv_filename: Str (ending with ".csv").
+    - data: Dict, DataFrame or Table.
 
 #### save_model(model, model_name) = jl.dump(model, model_name)
 
-    This function takes 
+    This function takes a model and a chosen model name and saves the model as a JOBLIB file with the chosen model_name.
+    
+    Parameters:
+    - model: Any object. 
+    - model_name: Str (ending with ".joblib"). 
 
 #### read_csv(csv_filename) = CSV.File(csv_filename)
 
     Parameters:
-    - csv_filename: String (ending with ".csv").
+    - csv_filename: Str (ending with ".csv").
 
     Returns:
     - CSV.File object.
-
-
-
-
-
-Het inroosteren van lessen is een ingewikkeld probleem. In deze case moet een weekrooster gemaakt worden voor een vakkenlijst op Science Park. 
-
-Hiervoor moeten 131 activiteiten ingepland worden. Dit kunnen hoorcolleges, werkcolleges en practica zijn.
-- Een activiteit duurt 2 uur (= tijdslot)
-- Maximale groepsgrootte bij werkcolleges en practica
-
-Verder zijn er 7 zalen waarin de activiteiten kunnen plaatsvinden.
-- Alle zalen zijn voor alle soorten activiteiten geschikt
-- Capaciteit verschilt per zaal
-
-Elk van de vakken kan worden ingedeeld in een van de 145 tijdsloten. Dit zijn periodes van 2 uur.
-- Elke zaal heeft vier tijdsloten overdag (9-11u, 11-13u, 13-15u, 15-17u)
-- Grootste zaal heeft ook een avondslot (17-19u)
-
-We hebben te maken met 609 Studenten.
-- Elke student volgt maximaal 5 vakken
-
-
-### Constraints
-
-De hard constraints van onze case zijn als volgt:
-- Alle activiteiten moeten worden ingeroosterd
-- Maximaal één activiteit per tijdslot per zaal inplannen
-- Student mag maximaal twee tussenuren hebben
-- Houden aan de maximumgrootte van werkcolleges en practica
-- Zo min mogelijk werkcollege- en practicumgroepen
-
-Naast het genereren van een geldige oplossing wordt er gekeken naar de kwaliteit van het rooster. Er wordt een aantal maluspunten toegekend bij het overtreden van de volgende soft constraints:
-- Studenten met tussenuren (α = # keren een tussenuur per dag per student)
-- Studenten met 2 tussenuren (β = # keren twee tussenuren per dag per student)
-- Studenten met twee activiteiten in hetzelfde tijdslot (γ = # lessen die overlappen per student)
-- Gebruik van avondslot (δ = # gebruikte avondsloten per lokaal)
-- Studenten die niet in het lokaal passen (ε = # studenten die niet in lokaal passen)
-
-### Goal
-
-De kwaliteit van het rooster wordt gemeten aan de hand van de volgende objective function, die geminimaliseerd moet worden:
-
-- f(α, β, γ, δ, ε) = α + 3⋅β + γ + 5⋅δ + ε
 
 ### Requirements
 
