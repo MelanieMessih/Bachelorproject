@@ -4,10 +4,9 @@
 
 # Molecular fingerprints
 
-create_directory(path::AbstractString)
-  This function takes a path. If the path does not exist, the specified path of directories 
-    is created.
-Parameters:
+create_directory(path::AbstractString)  
+This function takes a path. If the path does not exist, the specified path of directories is created.  
+Parameters:  
 - path: ...
 
 Het inroosteren van lessen is een ingewikkeld probleem. In deze case moet een weekrooster gemaakt worden voor een vakkenlijst op Science Park. 
