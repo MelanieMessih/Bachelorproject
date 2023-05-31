@@ -12,7 +12,7 @@
     
     Parameters:
     - X_data: DataFrame or Matrix.
-    - headers=[]: if X_data is a Matrix, headers should be specified as a list or vector with elements of type Str.
+    - headers=[]: if X_data is a Matrix, headers should be specified as a Vector with elements of type Str.
     
     Returns:
     - X_data: DataFrame or Matrix.
@@ -25,10 +25,10 @@
     function returns the DataFrame, independent variables, feature names, and dependent variables.
     
     Parameters:
-    - csv_file_name
+    - csv_file_name: Str (ending with ".csv"); name of an existing CSV file.
     
     Returns:
-    - data_name: DataFrame; contains data set.
+    - data_name: DataFrame; contains dataset.
     - X_data: DataFrame with elements of type Float64; contains X data.
     - headers: Vector with elements of type Str. 
     - y_data: Vector with elements of type Float64; contains y data.
@@ -38,15 +38,12 @@
     This function takes a path. If the path does not exist, the specified path of directories is created.  
     
     Parameters:  
-    - path: ...
+    - path: Str.
 
 #### create_all_directories()  
     This function creates all directories needed for this project. Specifically, the function creates directories for 
     summaries, figures, fingerprints and models, and each option has three subdirectories: PaDEL, RDKit and 
-    combined_fingerprints.  
-    
-    Parameters:  
-    -
+    combined_fingerprints.
 
 #### RDKit_fingerprints(dataset, fp_name, index_col_nr, smiles_col_nr, inchikeys_col_nr; nBits=nothing, radius=nothing)    
     This function takes a DataFrame, a fingerprint name that corresponds to one in the dictionary 'dict', and the 
@@ -56,13 +53,13 @@
     generated fingerprints, and the feature names. 
     
     Parameters:  
-    - dataset
-    - fp_name
-    - index_col_nr
-    - smiles_col_nr
-    - inchikeys_col_nr
-    - nBits=nothing
-    - radius=nothing
+    - dataset: DataFrame; contains dataset. 
+!!! - fp_name:
+    - index_col_nr: Int.
+    - smiles_col_nr: Int.
+    - inchikeys_col_nr: Int.
+    - nBits=nothing: Int. 
+    - radius=nothing: Int; 
     
     Returns:
     - total_df: DataFrame; contains optionally a column of indices of type Int64 and a column of inchikeys of type 
@@ -76,11 +73,11 @@
     the generated fingerprints, and the feature names. 
     
     Parameters:
-    - dataset
-    - fp_name
-    - index_col_nr
-    - smiles_col_nr
-    - inchikeys_col_nr
+    - dataset: DataFrame; contains dataset.
+ !!! - fp_name: ...
+    - index_col_nr: Int.
+    - smiles_col_nr: Int.
+    - inchikeys_col_nr: Int.
     
     Returns:
     - total_df: DataFrame; contains optionally a column of indices of type Int64 and a column of inchikeys of type 
@@ -94,7 +91,7 @@
     false. The modified XML file is saved back to the descriptors.xml file. 
     
     Parameters:
-    - wanted_fingerprint
+!!! - wanted_fingerprint: ...
     
 #### create_train_test_split(total_df, y_data; start_col_X_data=1, train_size=0.9, random_state=42)
     This function takes a DataFrame that contains independent variables, and a vector of dependent variables. Optional 
@@ -185,9 +182,9 @@
     max_features. 
     
     Parameters:
-    - param_grid
-    - X_train
-    - y_train
+    - param_grid: Dict ...
+    - X_train: 
+    - y_train: 
     
     Returns:
     - min_samples_leaf_opt: Int.
@@ -201,14 +198,14 @@
     y = x, and saves the figure. 
     
     Parameters:
-    - fp_name
-    - software_name 
-    - train_predictions 
-    - y_train 
-    - test_predictions
-    - y_test
-    - x_label="Measured LC50 (log(mg/L))"
-    - y_label="Predicted LC50 (log(mg/L))"
+!!! - fp_name: ...
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
+    - train_predictions: Vector with elements of type Int or Float. 
+    - y_train: Vector with elements of type Int or Float. 
+    - test_predictions: Vector with elements of type Int or Float. 
+    - y_test: Vector with elements of type Int or Float. 
+    - x_label="Measured LC50 (log(mg/L))": Str.
+    - y_label="Predicted LC50 (log(mg/L))": Str.
    
 #### plot_residuals(fp_name, software_name, residuals_train, y_train, residuals_test, y_test; x_label="Measured LC50 (log(mg/L))", y_label="Residuals")
     This function takes a fingerprint name, a software name, and arrays of train residuals, train data, test 
@@ -217,14 +214,14 @@
     lines y1 = 1 and y2 = -1, and saves the figure. 
     
     Parameters:
-    - fp_name
-    - software_name
-    - residuals_train
-    - y_train
-    - residuals_test
-    - y_test
-    - x_label="Measured LC50 (log(mg/L))"
-    - y_label="Residuals"
+!!! - fp_name: ...
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
+    - residuals_train: Vector with elements of type Int or Float. 
+    - y_train: Vector with elements of type Int or Float. 
+    - residuals_test: Vector with elements of type Int or Float. 
+    - y_test: Vector with elements of type Int or Float. 
+    - x_label="Measured LC50 (log(mg/L))": Str.
+    - y_label="Residuals": Str.
     
 #### plot_distribution_residuals(fp_name, software_name, residuals; x_label="Residuals", y_label="Frequency")
     This function takes a fingerprint name, a software name, and an array of residuals. The optional arguments are 
@@ -232,11 +229,11 @@
     together with the horizontal line y = 0, and saves the figure. 
     
     Parameters:
-    - fp_name
-    - software_name
-    - residuals
-    - x_label="Residuals"
-    - y_label="Frequency"
+!!! - fp_name: ...
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
+    - residuals: Vector with elements of type Int or Float. 
+    - x_label="Residuals": Str.
+    - y_label="Frequency": Str.
     
 #### plot_important_features(fp_name, software_name, important_features, importances; x_label="", y_label="Percentage importance")
     This function takes a fingerprint name, a software name, and arrays of important features and the 
@@ -244,12 +241,12 @@
     a bar plot of the important features and their importance percentages, and saves the figure. 
     
     Parameters:
-    - fp_name
-    - software_name
-    - important_features
-    - importances
-    - x_label=""
-    - y_label="Percentage importance"
+!!! - fp_name: ...
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
+    - important_features: Vector with elements of type Str.
+    - importances: Vector with elements of type Int or Float.
+    - x_label="": Str.
+    - y_label="Percentage importance": Str.
     
 #### function create_plots_of_summary(summary_opt_filename, software_name)
     This function takes a filename of a summary of optimized fingerprint models and the corresponding software 
@@ -260,8 +257,8 @@
     the important features and their importance percentages, and saves the figures. 
     
     Parameters:
-    - summary_opt_filename
-    - software_name
+    - summary_opt_filename: Str (ending with ".csv"); CSV filename should not exist already.
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
     
 #### function remove_low_scores(summary_opt; limit_train_score=0.8, limit_test_score=0.5)
     This function takes a CSV.File object that contains a summary and two optional arguments which are floats 
@@ -285,7 +282,7 @@
     and test scores. 
     
     Parameters:
-    - summary_opt_filename: Str; (ending with ".csv"); name of an existing CSV file.
+    - summary_opt_filename: Str (ending with ".csv"); name of an existing CSV file.
     - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
     - limit_train_score=0.8: Float between 0 and 1.
     - limit_test_score=0.5: Float between 0 and 1.
@@ -354,7 +351,7 @@
     given data as a CSV file with the chosen csv_filename. 
     
     Parameters:
-    - csv_filename: Str (ending with ".csv").
+    - csv_filename: Str (ending with ".csv"); CSV filename should not exist already.
     - data: Dict, DataFrame or Table.
 
 #### save_model(model, model_name) = jl.dump(model, model_name)
@@ -363,12 +360,12 @@
     
     Parameters:
     - model: Any object. 
-    - model_name: Str (ending with ".joblib"). 
+    - model_name: Str (ending with ".joblib"); JOBLIB filename should not exist already.
 
 #### read_csv(csv_filename) = CSV.File(csv_filename)
 
     Parameters:
-    - csv_filename: Str (ending with ".csv").
+    - csv_filename: Str (ending with ".csv"); name of an existing CSV file.
 
     Returns:
     - CSV.File object.
