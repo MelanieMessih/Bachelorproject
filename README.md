@@ -35,7 +35,7 @@ create_best_fingerprint(fish_toxicity_data, y_data, 2, index_col_nr=1, inchikeys
 
 ### Overview functions
 
-### Included in final_function.jl:
+- Included in final_function.jl:
 #### create_best_fingerprint(dataset, y_data, smiles_col_nr; index_col_nr=nothing, inchikeys_col_nr=nothing, limit_train_score=0.8, limit_test_score=0.5, variance_explained=85)
     This function takes a DataFrame of the dataset that contains columns with X data, y data, SMILES and optionally 
     indices and inchikeys, a vector of y data, and the column number of the DataFrame that contains SMILES. Optional
@@ -60,7 +60,7 @@ create_best_fingerprint(fish_toxicity_data, y_data, 2, index_col_nr=1, inchikeys
     - limit_test_score=0.5: Float between 0 and 1. 
     - variance_explained=85: Int between 0 and 100. 
 
-### Included in final_functions.jl:
+- Included in final_functions.jl:
 #### remove_features(X_data, headers=[])
     This function takes a DataFrame or Matrix as input. When a DataFrame is given, "headers" can be left empty. When 
     a Matrix is given, headers should be spicified to make sure the column headers are known when working with the 
