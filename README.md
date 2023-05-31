@@ -4,6 +4,11 @@
 
 # Molecular fingerprints
 
+create_directory(path::AbstractString)
+...
+Parameters:
+-path: ...
+
 Het inroosteren van lessen is een ingewikkeld probleem. In deze case moet een weekrooster gemaakt worden voor een vakkenlijst op Science Park. 
 
 Hiervoor moeten 131 activiteiten ingepland worden. Dit kunnen hoorcolleges, werkcolleges en practica zijn.
