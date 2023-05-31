@@ -4,6 +4,8 @@
 
 # Molecular fingerprints
 
+SMALL DESCRIPTION OF THE PROJECT (GOAL AND WHAT THE FUNCTION DOES)
+
 ### Requirements
 
 This codebase is fully written in Julia 1.6.7. The packages needed to sucessfully run the code are provided below:
