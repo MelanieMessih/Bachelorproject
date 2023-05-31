@@ -22,14 +22,15 @@ Parameters:
     that only apply for certain fingerprints, specified in 'dict'. The function generates RDKit fingerprints for each 
     molecule in the data set using their SMILES. The function returns a DataFrame with indices, inchikeys and the 
     generated fingerprints, and the feature names. 
-Parameters:  
-- dataset
-- fp_name
-- index_col_nr
-- smiles_col_nr
-- inchikeys_col_nr
-- nBits=nothing
-- radius=nothing
+    
+    Parameters:  
+    - dataset
+    - fp_name
+    - index_col_nr
+    - smiles_col_nr
+    - inchikeys_col_nr
+    - nBits=nothing
+    - radius=nothing
 
 
 
