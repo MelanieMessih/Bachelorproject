@@ -9,7 +9,7 @@
 This codebase is fully written in Julia 1.6.7. The packages needed to sucessfully run the code are provided below:
 
 ```
-using CSV, DataFrames, PyCall, ScikitLearn, Statistics, Plots, Tables, Plots.PlotMeasures, LightXML, LinearAlgebra, ProgressBars, OrderedCollections, Base.Filesystem
+using CSV, DataFrames, PyCall, ScikitLearn, Statistics, Plots, Plots.PlotMeasures, LightXML, LinearAlgebra, ProgressBars, Base.Filesystem
 ```
 
 Other packages are installed using pyimport from PyCall. For this, Java needs to be installed (https://www.java.com/en/download/manual.jsp).  
