@@ -11,8 +11,13 @@
     Dataframe or Matrix and its headers. 
     
     Parameters:
-    - X_data
-    - headers=[]
+    - X_data: DataFrame or Matrix.
+    - headers=[]: if X_data is a Matrix, headers should be specified as a list or vector with elements of type Str.
+    
+    Returns:
+    - X_data: DataFrame or Matrix.
+    - headers: Vector with elements of type Str. 
+    
 
 #### read_data(csv_file_name)
     This function takes a CSV file name as input and reads it as a DataFrame. The independent and dependent 
@@ -21,6 +26,12 @@
     
     Parameters:
     - csv_file_name
+    
+    Returns:
+    - data_name: DataFrame; contains data set.
+    - X_data: DataFrame with elements of type Float64; contains X data.
+    - headers: Vector with elements of type Str. 
+    - y_data: Vector with elements of type Float64; contains y data.
 
 
 #### create_directory(path::AbstractString)  
@@ -38,9 +49,9 @@
     -
 
 #### RDKit_fingerprints(dataset, fp_name, index_col_nr, smiles_col_nr, inchikeys_col_nr; nBits=nothing, radius=nothing)    
-    This function takes a DataFrame, a fingerprint name that corresponds to one in the dictionary 'dict' below, 
-    and the column numbers of indices, SMILES and inchikeys in the DataFrame. nBits and radius are optional arguments 
-    that only apply for certain fingerprints, specified in 'dict'. The function generates RDKit fingerprints for each 
+    This function takes a DataFrame, a fingerprint name that corresponds to one in the dictionary 'dict', and the 
+    column numbers of indices, SMILES and inchikeys in the DataFrame. nBits and radius are optional arguments that 
+    only apply for certain fingerprints, specified in 'dict'. The function generates RDKit fingerprints for each 
     molecule in the data set using their SMILES. The function returns a DataFrame with indices, inchikeys and the 
     generated fingerprints, and the feature names. 
     
@@ -52,6 +63,11 @@
     - inchikeys_col_nr
     - nBits=nothing
     - radius=nothing
+    
+    Returns:
+    - total_df: DataFrame; contains optionally a column of indices of type Int64 and a column of inchikeys of type 
+      Str31, followed by X data elements of type Float64. 
+    - headers_RDK: Vector with elements of type Str.
     
 #### PaDEL_fingerprints(dataset, fp_name, index_col_nr, smiles_col_nr, inchikeys_col_nr)
     This function takes a DataFrame, a fingerprint name that corresponds to one in the descriptors.XML file, 
@@ -65,6 +81,12 @@
     - index_col_nr
     - smiles_col_nr
     - inchikeys_col_nr
+    
+    Returns:
+    - total_df: DataFrame; contains optionally a column of indices of type Int64 and a column of inchikeys of type 
+      Str31, followed by X data elements of type Float64. 
+    - headers_PaDEL: Vector with elements of type Str.
+    
     
 #### change_xml(wanted_fingerprint)
     This function takes a fingerprint name that corresponds to one in the descriptors.xml file and modifies 
@@ -82,41 +104,61 @@
     the independent variables are returned as matrices. 
     
     Parameters:
-    - total_df
-    - y_data
-    - start_col_X_data=1
-    - train_size=0.9
-    - random_state=42
+    - total_df: DataFrame, contains optionally a column of indices of type Int and a column of inchikeys of type Str, 
+      followed by X data elements of type Float64. 
+    - y_data: Vector with elements of type Float64. 
+    - start_col_X_data=1: Int.
+    - train_size=0.9: Float between 0 and 1. 
+    - random_state=42: Int.
+    
+    Returns:
+    - total_train: Matrix; contains amongst others X train data elements of type Float64. 
+    - total_test: Matrix; contains amongst others X test data elements of type Float64. 
+    - y_train: Vector with elements of type Float64. 
+    - y_test: Vector with elements of type Float64. 
+    - X_train: Matrix with elements of type Float64. 
+    - X_test: Matrix with elements of type Float64. 
 
 #### train_model(X_train, y_train, X_test, y_test; n_estimators=600, min_samples_leaf=4, max_features="sqrt", random_state=42)
-    This function takes train matrices of independent and dependent variables, and test matrices of independent and 
-    dependent variables. Optional arguments are the number of estimators, a minimum number of samples in each leaf, a 
-    maximum number of features to consider when looking for the best split, and an integer representing the random state.
-    The function creates and predicts a Random Forest Regressor using the chosen parameters and returns the trained model,
-    the train and test score, and the train and test predictions.
+    This function takes train arrays of X and y data, and test matrices of X and y data. Optional arguments are 
+    the number of estimators, a minimum number of samples in each leaf, a maximum number of features to 
+    consider when looking for the best split, and an integer representing the random state. The function creates 
+    and predicts a Random Forest Regressor using the chosen parameters and returns the trained model, the train 
+    and test score, and the train and test predictions.
     
     Parameters:
-    - X_train
-    - y_train
-    - X_test
-    - y_test
-    - n_estimators=600
-    - min_samples_leaf=4
-    - max_features="sqrt"
-    - random_state=42
+    - X_train: Matrix with elements of type Float64. 
+    - y_train: Vector with elements of type Float64. 
+    - X_test: Matrix with elements of type Float64. 
+    - y_test: Vector with elements of type Float64. 
+    - n_estimators=600: Int.
+    - min_samples_leaf=4: Int.
+    - max_features="sqrt": Int or Str; 1.0, "sqrt" or "log2".
+    - random_state=42: Int.
+    
+    Returns: 
+    - model: Sklearn RandomForestRegressor. 
+    - train_score: Float.
+    - test_score: Float.
+    - train_predictions: Vector with elements of type Float.
+    - test_predictions: Vector with elements of type Float.
     
 #### cross_validation(model, X_train, y_train, test_score; cv=3)
-    This function takes a model, matrices of independent and dependent variables, and a test score. The 
+    This function takes a model, arrays of independent and dependent variables, and a test score. The 
     optional argument is an integer that represents the number of folds for the cross validation. The 
     function performs a cross validation and returns an array of the cross validation score and R, which 
     is the median of the test score and the cross validation scores. 
     
     Parameters:
-    - model
-    - X_train
-    - y_train
-    - test_score
-    - cv=3
+    - model: Any object.
+    - X_train: Matrix with elements of type Float64. 
+    - y_train: Vector with elements of type Float64. 
+    - test_score: Float.
+    - cv=3: Int.
+    
+    Returns:
+    - cross_score: Vector with elements of type Float.
+    - R: Float; median of test_score and the elements of cross_score.
     
 #### important_features(model, headers; variance_explained=85) 
     This function takes a model and an array of variable names. The optional argument is an integer between 
@@ -126,9 +168,15 @@
     the selected important features. 
     
     Parameters:
-    - model
-    - headers 
-    - variance_explained=85
+    - model: Any object.
+    - headers: Vector with elements of type Str.
+    - variance_explained=85: Int between 0 and 100.
+    
+    Returns:
+    - sum_importance: Float.
+    - important_headers: Vector with elements of type Str.
+    - importances: Vector with elements of type Float. 
+    - n_important_features: Int.
     
 #### grid_best_params(param_grid, X_train, y_train)
     This function takes a dictionary with "min_samples_leaf", "n_estimators" and "max_features" as keys and 
@@ -140,6 +188,11 @@
     - param_grid
     - X_train
     - y_train
+    
+    Returns:
+    - min_samples_leaf_opt: Int.
+    - n_estimators_opt: Int.
+    - max_features_opt: Int or Str; 1.0, "sqrt" or "log2".
     
 #### plot_training_testing(fp_name, software_name, train_predictions, y_train, test_predictions, y_test; x_label="Measured LC50 (log(mg/L))", y_label="Predicted LC50 (log(mg/L))")
     This function takes a fingerprint name, a software name, and arrays of train predictions, train data, test 
@@ -221,6 +274,9 @@
     - limit_train_score=0.8: Float between 0 and 1.
     - limit_test_score=0.5: Float between 0 and 1.
     
+    Returns:
+    - new_summary: DataFrame.
+    
 #### summary_best_scores(summary_opt_filename, software_name; limit_train_score=0.8, limit_test_score=0.5)
     This function takes a filename of a summary of optimized fingerprint models and the corresponding software 
     name. The optional arguments are two floats between 0 and 1, which represent the minimum train and test score 
@@ -229,10 +285,10 @@
     and test scores. 
     
     Parameters:
-    - summary_opt_filename
-    - software_name
-    - limit_train_score=0.8 
-    - limit_test_score=0.5
+    - summary_opt_filename: Str; (ending with ".csv"); name of an existing CSV file.
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
+    - limit_train_score=0.8: Float between 0 and 1.
+    - limit_test_score=0.5: Float between 0 and 1.
     
 #### create_combined_fp(filename_scores_PaDEL, filename_scores_RDK, filename_combined_fp)
     This function takes the existing filenames of selected PaDEL and RDKit summaries of scores, and a new filename 
@@ -240,9 +296,9 @@
     fingerprints and stores them in a new CSV file.
     
     Parameters:
-    - filename_scores_PaDEL
-    - filename_scores_RDK
-    - filename_combined_fp
+    - filename_scores_PaDEL: Str (ending with ".csv"); name of an existing CSV file.
+    - filename_scores_RDK: Str (ending with ".csv"); name of an existing CSV file.
+    - filename_combined_fp: Str (ending with ".csv"); CSV filename should not exist already.
     
 #### train_optimize_fp(fp_filename, software_name, y_data, new_model_name, param_grid; variance_explained=85)
     This function takes a fingerprint filename, a software name, an array of y data, a new model name, and a dictionary 
@@ -255,16 +311,16 @@
     
     Parameters:
     - fp_filename: Str (ending with ".csv"); name of an existing CSV file. 
-    - software_name: "PaDEL", "RDKit" or "combined_fingerprints".
+    - software_name: Str; "PaDEL", "RDKit" or "combined_fingerprints".
     - y_data: Vector with elements of type Float or Int.
     - new_model_name: Str; model name should not exist already.
     - param_grid: Dict with "min_samples_leaf" (Vector of Int), "n_estimators" (Vector of Int) and "max_features" (Vector 
       of 1.0, "sqrt", and/or "log2") as keys (values).
-    - variance_explained=85
+    - variance_explained=85: Int between 0 and 100.
     
 #### str_to_floatVec(string)
     This function takes a string of substrings separated by semicolons and parses the substrings to separated parts of 
-    type Float64. The function returns the resulting float vector. 
+    type Float64. The function returns the resulting Float vector. 
     
     Parameters:
     - string: Str of substrings separated by semicolons. Substrings should be able to be transformed to floats. 
@@ -274,7 +330,7 @@
     
 #### str_to_strVec(string)
     This function takes a string of substrings separated by semicolons and splits the substrings to separated parts of
-    type Str. The function returns the resulting string vector. 
+    type Str. The function returns the resulting Str vector. 
     
     Parameters:
     - string: Str of substrings separated by semicolons.
@@ -355,18 +411,6 @@ Indien er met behulp van de instructies in main.py voor gekozen is om een yaml f
 ```
 pdfschedule --font Courier --color data/room{room_name}.yaml figures/room{room_name}.pdf
 ```
-
-Hierbij kan voor {room_name} een van de volgende lokalen ingevuld worden:
-- A1.04, A1.06, A1.08, A1.10, B0.201, C0.110, C1.112
-
-Een plot waarin het verloop van een van de Hillclimbers wordt getoond kan worden aangeroepen met de make_plot() functie.
-Een histogram van de score van een aantal Random of Greedy roosters kan worden aangeroepen met de make_histogram() functie.
-Allebei de functies kunnen worden gerund door het aanroepen van:
-```
-python experiments.py
-```
-
-Onderaan het bovengenoemde bestand kunnen de verschillende optionele arguments handmatig aangepast worden.
 
 ### Structure
 
