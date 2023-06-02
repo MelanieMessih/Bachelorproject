@@ -14,7 +14,7 @@ This codebase is fully written in Julia 1.6.7. The packages needed to sucessfull
 using Pkg, CSV, DataFrames, PyCall, Conda, ScikitLearn, Statistics, Plots, Tables, Plots.PlotMeasures, LightXML, LinearAlgebra, ProgressBars, OrderedCollections, Base.Filesystem
 ```
 
-Other packages are installed using pyimport from PyCall. For this, Java needs to be installed (https://www.java.com/en/download/manual.jsp).  
+To calculate molecular fingerprints, Java needs to be installed (https://www.java.com/en/download/manual.jsp). Other packages needed are installed using pyimport from PyCall.
 
 The following list describes the folder structure that can be found on this page.
 - **Bachelorproject**: all of the files in this folder should be included in the main directory when running the code.
