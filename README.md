@@ -37,8 +37,8 @@ create_best_fingerprint(fish_toxicity_data, y_data, 2, index_col_nr=1, inchikeys
 
 - Included in final_function.jl:
 #### create_best_fingerprint(dataset, y_data, smiles_col_nr; index_col_nr=nothing, inchikeys_col_nr=nothing, limit_train_score=0.8, limit_test_score=0.5, variance_explained=85)
-    This function takes a DataFrame of the dataset that contains columns with X data, y data, SMILES and optionally 
-    indices and inchikeys, a vector of y data, and the column number of the DataFrame that contains SMILES. Optional
+    This function takes a DataFrame of the dataset that contains columns with X data, SMILES and optionally indices 
+    and inchikeys, a vector of y data, and the column number of the DataFrame that contains SMILES. Optional
     parameters are the column numbers that contain indices and inchikeys, two floats between 0 and 1 that represent 
     the minimum train and test score for the selection of the fingerprints, and an integer between 0 and 100 that 
     represents the variance percentage you want to have explained by the important features. 
