@@ -44,7 +44,7 @@ function read_data(csv_file_name)
     return data_name, X_data, headers, y_data
 end
 
-function create_directory(path::AbstractString)
+function create_directory(path)
     """
     This function takes a path. If the path does not exist, the specified path of directories 
     is created.
