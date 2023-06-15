@@ -91,7 +91,7 @@ create_best_fingerprint(fish_toxicity_data, y_data, 2, index_col_nr=1, inchikeys
     - y_data: Vector with elements of type Float64; contains y data.
 
 
-#### create_directory(path::AbstractString)  
+#### create_directory(path)  
     This function takes a path. If the path does not exist, the specified path of directories is created.  
     
     Parameters:  
