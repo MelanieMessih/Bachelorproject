@@ -449,4 +449,5 @@ The following list describes the folder structure that will be created when the 
 - Viktoriia Turkina MSc
 
 ## Research group, research institute and university
-Analytical Chemistry Group, Van 't Hoff Institute for Molecular Sciences (HIMS), University of Amsterdam (UvA)
+Environmental Modeling & Computational Mass Spectrometry (EMCMS), Analytical Chemistry Group, Van 't Hoff Institute for Molecular Sciences (HIMS), University of Amsterdam (UvA)
+https://emcms.info/ 
