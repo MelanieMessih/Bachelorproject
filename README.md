@@ -3,8 +3,7 @@
 - Duration: 3 months (April 2023 - June 2023)
 
 # Molecular fingerprints
-
-SMALL DESCRIPTION OF THE PROJECT (GOAL AND WHAT THE FUNCTION DOES)
+In this study, an algorithm was developed that automatically calculates, selects, and combines molecular fingerprints from SMILES, and utilizes them to generate an optimized random forest regression model for the prediction of any target property.
 
 ### Requirements
 
@@ -445,7 +444,7 @@ The following list describes the folder structure that will be created when the 
 - Melanie Messih
 
 ## Supervisors
-- dr. Saer Samanipour
+- Dr. Saer Samanipour
 - Viktoriia Turkina MSc
 
 ## Research group, research institute and university
