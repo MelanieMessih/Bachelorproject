@@ -7,7 +7,7 @@ In this study, an algorithm was developed that automatically calculates, selects
 
 ### Requirements
 
-This codebase is fully written in Julia 1.6.7. The packages needed to sucessfully run the code are provided below:
+This codebase is fully written in Python 3.9.13. The packages needed to sucessfully run the code are provided below:
 
 ```
 using Pkg, CSV, DataFrames, PyCall, Conda, ScikitLearn, Statistics, Plots, Tables, Plots.PlotMeasures, LightXML, LinearAlgebra, ProgressBars, OrderedCollections, Base.Filesystem
